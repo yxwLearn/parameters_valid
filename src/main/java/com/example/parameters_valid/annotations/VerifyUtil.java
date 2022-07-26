@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.ObjectUtils;
 import org.apache.commons.lang.StringUtils;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.List;
@@ -39,17 +40,18 @@ public class VerifyUtil {
                         valid = value instanceof String && value.toString().length() == Integer.parseInt(verify.rule());
                         break;
                     case BETWEEN:
+
                         rules = verify.rule().split(",");
                         if (value instanceof List){
                             List<?> list= (List<?>) value;
                             valid = list.size() >= Integer.parseInt(rules[0]) && list.size() <= Integer.parseInt(rules[1]);
                             break;
-                        }else if (value instanceof Arrays){
-                            Object[] arrays= (Object[]) value;
+                        }else if (value.getClass().isArray()){
+                            Object[] arrays= (Object[])value;
                             valid = arrays.length >= Integer.parseInt(rules[0]) && arrays.length <= Integer.parseInt(rules[1]);
                             break;
                         }else if (value instanceof Map){
-                            Map map= (Map) value;
+                            Map<?,?> map= (Map<?,?>) value;
                             valid = map.size() >= Integer.parseInt(rules[0]) && map.size() <= Integer.parseInt(rules[1]);
                             break;
                         }else if (value instanceof Integer){
@@ -67,7 +69,7 @@ public class VerifyUtil {
                             valid = arrays.length>0;
                             break;
                         }else if (value instanceof Map){
-                            Map map= (Map) value;
+                            Map<?,?> map= (Map<?,?>) value;
                             valid = map.isEmpty();
                             break;
                         }

@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Map;
 
 @Data
 @AllArgsConstructor
@@ -30,6 +31,12 @@ public class RequestModel {
 
     @VerifyRule(type = VerifyType.BETWEEN,rule="1,3",message = "列表长度不合法")
     private List<String> list;
+
+    @VerifyRule(type = VerifyType.BETWEEN,rule="1,3",message = "数组长度不合法")
+    private String[] array;
+
+    @VerifyRule(type = VerifyType.BETWEEN,rule="1,3",message = "map长度不合法")
+    private Map<String,String> map;
 
     @VerifyRule
     private UserModel userModel;
