@@ -15,18 +15,22 @@ import java.util.List;
 @Builder
 public class RequestModel {
 
-    @VerifyRule(notNull = true,type = VerifyType.LENGTH,rule="3",message = "长度不合法")
+    @VerifyRule(type = VerifyType.LENGTH,rule="3",message = "长度不合法")
     private String userId;
 
     private String idCard;
 
     private String telephone;
 
+    @VerifyRule(type = VerifyType.REGEX,rule="\\w[-\\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\\.)+[A-Za-z]{2,14}",message = "邮箱格式错误")
     private String email;
 
+    @VerifyRule(type = VerifyType.IN,rule="1,99",message = "非法值")
     private Integer age;
 
+    @VerifyRule(type = VerifyType.BETWEEN,rule="1,3",message = "列表长度不合法")
     private List<String> list;
 
+    @VerifyRule
     private List<UserModel> userModelList;
 }

@@ -14,7 +14,7 @@ public @interface VerifyRule {
 
     String rule() default "";
 
-    boolean notNull() default false;
+    boolean notNull() default true;
 
     String message() default "";
 

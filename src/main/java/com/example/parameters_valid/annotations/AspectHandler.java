@@ -41,7 +41,7 @@ public class AspectHandler {
                     VerifyRule verify = field.getAnnotation(VerifyRule.class);
                     Object fieldObj = field.get(requestParamObj);
 
-//                    VerifyUtil.validate(verify.type(),verify.rule(),verify.notNull(), fieldObj,verify.message());
+                    VerifyUtil.validate(verify.type(),verify.rule(),verify.notNull(), fieldObj,verify.message());
                 }
             }
         }
