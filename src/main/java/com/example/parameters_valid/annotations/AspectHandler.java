@@ -40,8 +40,9 @@ public class AspectHandler {
                 if (field.isAnnotationPresent(VerifyRule.class)) {
                     VerifyRule verify = field.getAnnotation(VerifyRule.class);
                     Object fieldObj = field.get(requestParamObj);
+                    VerifyUtil.validate(verify,field,fieldObj);
 
-                    VerifyUtil.validate(verify.type(),verify.rule(),verify.notNull(), fieldObj,verify.message());
+
                 }
             }
         }

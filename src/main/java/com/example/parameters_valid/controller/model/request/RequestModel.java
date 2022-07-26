@@ -32,5 +32,8 @@ public class RequestModel {
     private List<String> list;
 
     @VerifyRule
+    private UserModel userModel;
+
+    @VerifyRule
     private List<UserModel> userModelList;
 }

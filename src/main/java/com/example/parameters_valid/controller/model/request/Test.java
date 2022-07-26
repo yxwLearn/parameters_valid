@@ -5,11 +5,8 @@ import com.example.parameters_valid.annotations.VerifyType;
 import lombok.Data;
 
 @Data
-public class UserModel {
+public class Test {
 
-    @VerifyRule(type = VerifyType.HAS_TEXT)
-    private String userName;
-
-    @VerifyRule
-    private Test test;
+    @VerifyRule(type = VerifyType.BETWEEN,rule = "1,9",message = "demo 值不在有效范围内")
+    private Integer demo;
 }
